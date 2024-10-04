@@ -1,6 +1,11 @@
-import { compileDeclareNgModuleFromMetadata } from '@angular/compiler';
 import { Component } from '@angular/core';
-import { AbstractControl, FormBuilder, FormGroup } from '@angular/forms';
+import {
+  AbstractControl,
+  FormControl,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
+import { confirmPasswordValidator } from '../comfirm-password.validator';
 
 @Component({
   selector: 'app-reactive-form',
@@ -8,21 +13,32 @@ import { AbstractControl, FormBuilder, FormGroup } from '@angular/forms';
   styleUrl: './reactive-form.component.css',
 })
 export class ReactiveFormComponent {
-  form: FormGroup;
+  form: FormGroup = new FormGroup(
+    {
+      username: new FormControl(
+        '',
+        Validators.compose([Validators.required, Validators.minLength(3)])
+      ),
+      email: new FormControl(
+        '',
+        Validators.compose([Validators.required, Validators.email])
+      ),
+      password: new FormControl(
+        '',
+        Validators.compose([Validators.required, Validators.minLength(6)])
+      ),
+      confirmPassword: new FormControl('', Validators.required),
+      age: new FormControl('', Validators.required),
+      gender: new FormControl('', Validators.required),
+      interest: new FormControl('', Validators.required),
+    },
+    { validators: confirmPasswordValidator() }
+  );
 
-  constructor(formBuilder: FormBuilder) {
-    this.form = formBuilder.group({
-      username: [''],
-      email: [''],
-      password: [''],
-      confirmPassword: [''],
-      age: [''],
-      gender: ['male'],
-      interest: [''],
-    });
-  }
-
-  onSubmit(formData: {}) {
-    console.log(formData);
+  onSubmit(): void {
+    console.log(this.form);
+    if (this.form.hasError('passwordsMismatch')) {
+      console.log('Passwords do not match!');
+    }
   }
 }

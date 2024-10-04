@@ -1,7 +1,7 @@
 <div class="ui raised segment">
   <h2 class="ui header">Angular Reactive Form</h2>
 
-  <form class="ui form" [formGroup]="form" (ngSubmit)="onSubmit(form.value)">
+  <form class="ui form" [formGroup]="form" (ngSubmit)="onSubmit()">
     <div class="field">
       <label for="username">Username</label>
       <input
@@ -12,6 +12,7 @@
         [formControl]="form.controls['username']"
       />
     </div>
+
     <div class="field">
       <label for="email">Email</label>
       <input
