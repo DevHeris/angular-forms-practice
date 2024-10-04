@@ -1,0 +1,92 @@
+<div class="ui raised segment">
+  <h2 class="ui header">Angular Reactive Form</h2>
+
+  <form class="ui form" [formGroup]="form" (ngSubmit)="onSubmit(form.value)">
+    <div class="field">
+      <label for="username">Username</label>
+      <input
+        type="text"
+        id="username"
+        placeholder="Username"
+        name="username"
+        [formControl]="form.controls['username']"
+      />
+    </div>
+    <div class="field">
+      <label for="email">Email</label>
+      <input
+        type="text"
+        id="email"
+        placeholder="Email"
+        name="email"
+        [formControl]="form.controls['email']"
+      />
+    </div>
+    <div class="field">
+      <label for="password">Password</label>
+      <input
+        type="password"
+        id="password"
+        placeholder="Password"
+        name="password"
+        [formControl]="form.controls['password']"
+      />
+    </div>
+    <div class="field">
+      <label for="confirmPassword">Confirm Password</label>
+      <input
+        type="password"
+        id="confirmPassword"
+        placeholder="Confirm Password"
+        name="confirmPassword"
+        [formControl]="form.controls['confirmPassword']"
+      />
+    </div>
+    <div class="field">
+      <label for="age">Age</label>
+      <input
+        type="number"
+        id="age"
+        placeholder="Age"
+        name="age"
+        [formControl]="form.controls['age']"
+      />
+    </div>
+    <div class="field">
+      <label for="gender">Gender</label>
+      <select name="gender" id="gender" [formControl]="form.controls['gender']">
+        <option value="male">Male</option>
+        <option value="female">Female</option>
+        <option value="others">Others</option>
+      </select>
+    </div>
+    <div class="field">
+      <label for="">Interest</label>
+      <div class="radios">
+        <input
+          type="radio"
+          name="interest"
+          value="angular"
+          [formControl]="form.controls['interest']"
+        />
+        <label for="interest_angular">Angular</label><br />
+        <input
+          type="radio"
+          name="interest"
+          value="react"
+          [formControl]="form.controls['interest']"
+        />
+        <label for="interest_react">React</label><br />
+        <input
+          type="radio"
+          name="interest"
+          value="vue"
+          [formControl]="form.controls['interest']"
+        />
+        <label for="interest_vue">Vue</label><br />
+      </div>
+    </div>
+
+    <button type="submit" class="ui button">Submit</button>
+  </form>
+</div>

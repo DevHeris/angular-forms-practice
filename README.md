@@ -15,9 +15,8 @@ The goal of this exercise is to create a **User Registration Form** using Angula
    - **Password** (Password input)
    - **Confirm Password** (Password input)
    - **Age** (Number input)
-   - **Gender** (Radio buttons with options: Male, Female, Other)
-   - **Interests** (Dynamic checkboxes created using **FormArray**)
-   - **Profile Picture** (File input using Angular's reactive form handling)
+   - **Gender** (Select with options: Male, Female, Other)
+   - **Interest** ( Radio buttons )
 3. Add a **Submit** button at the end of the form.
 
 ### Form Validation
@@ -34,10 +33,6 @@ The goal of this exercise is to create a **User Registration Form** using Angula
    - Must be a number and greater than or equal to 18.
 6. **Gender**:
    - Required (Radio buttons).
-7. **Interests**:
-   - At least 2 interests should be selected from a list of checkboxes.
-8. **Profile Picture**:
-   - Optional but should only accept image files (`.jpg`, `.png`).
 
 ### Custom Validation
 

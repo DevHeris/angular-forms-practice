@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "angular-forms-exercise": {
+    "form": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -34,7 +34,7 @@
                 "input": "public"
               }
             ],
-            "styles": ["/src/app/vendor/semantic.min.css", "src/styles.css"],
+            "styles": ["src/app/vendor/semantic.min.css", "src/styles.css"],
             "scripts": []
           },
           "configurations": {
@@ -87,7 +87,7 @@
                 "input": "public"
               }
             ],
-            "styles": ["/src/app/vendor/semantic.min.css", "src/styles.css"],
+            "styles": ["src/app/vendor/semantic.min.css", "src/styles.css"],
             "scripts": []
           }
         }
