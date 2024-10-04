@@ -9,8 +9,18 @@
         id="username"
         placeholder="Username"
         name="username"
-        [formControl]="form.controls['username']"
+        formControlName="username"
+        required
       />
+      <div
+        *ngIf="username.invalid && (username.dirty || username.touched)"
+        class="error"
+      >
+        <p *ngIf="username.hasError('required')">Username is required.</p>
+        <p *ngIf="username.hasError('minlength')">
+          Username must be at least 3 characters long.
+        </p>
+      </div>
     </div>
 
     <div class="field">
@@ -20,8 +30,16 @@
         id="email"
         placeholder="Email"
         name="email"
-        [formControl]="form.controls['email']"
+        formControlName="email"
+        required
       />
+      <div
+        *ngIf="email.invalid && (email.dirty || email.touched)"
+        class="error"
+      >
+        <p *ngIf="email.hasError('required')">Email is required.</p>
+        <p *ngIf="email.hasError('email')">Email must be valid.</p>
+      </div>
     </div>
     <div class="field">
       <label for="password">Password</label>
@@ -30,8 +48,15 @@
         id="password"
         placeholder="Password"
         name="password"
-        [formControl]="form.controls['password']"
+        formControlName="password"
+        required
       />
+      <div
+        *ngIf="password.invalid && (password.dirty || password.touched)"
+        class="error"
+      >
+        <p *ngIf="password.hasError('required')">Password is required.</p>
+      </div>
     </div>
     <div class="field">
       <label for="confirmPassword">Confirm Password</label>
@@ -40,8 +65,23 @@
         id="confirmPassword"
         placeholder="Confirm Password"
         name="confirmPassword"
-        [formControl]="form.controls['confirmPassword']"
+        formControlName="confirmPassword"
+        required
       />
+      <div
+        *ngIf="
+          form.hasError('passwordsMismatch') &&
+          (confirmPassword.dirty || confirmPassword.touched)
+        "
+        class="error"
+      >
+        <p *ngIf="confirmPassword.hasError('required')">
+          Password confirmation is required.
+        </p>
+        <p *ngIf="form.hasError('passwordsMismatch')">
+          Must be the same as the password you entered above.
+        </p>
+      </div>
     </div>
     <div class="field">
       <label for="age">Age</label>
@@ -50,12 +90,17 @@
         id="age"
         placeholder="Age"
         name="age"
-        [formControl]="form.controls['age']"
+        formControlName="age"
       />
+      <div *ngIf="age.invalid && (age.dirty || age.touched)" class="error">
+        <p *ngIf="age.hasError('notUpToAge')">
+          Age must be greater than or equal to 18.
+        </p>
+      </div>
     </div>
     <div class="field">
       <label for="gender">Gender</label>
-      <select name="gender" id="gender" [formControl]="form.controls['gender']">
+      <select name="gender" id="gender" formControlName="gender">
         <option value="male">Male</option>
         <option value="female">Female</option>
         <option value="others">Others</option>
@@ -68,21 +113,21 @@
           type="radio"
           name="interest"
           value="angular"
-          [formControl]="form.controls['interest']"
+          formControlName="interest"
         />
         <label for="interest_angular">Angular</label><br />
         <input
           type="radio"
           name="interest"
           value="react"
-          [formControl]="form.controls['interest']"
+          formControlName="interest"
         />
         <label for="interest_react">React</label><br />
         <input
           type="radio"
           name="interest"
           value="vue"
-          [formControl]="form.controls['interest']"
+          formControlName="interest"
         />
         <label for="interest_vue">Vue</label><br />
       </div>

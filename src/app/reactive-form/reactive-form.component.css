@@ -5,3 +5,19 @@
 .radios input {
     margin-right: .5em;
 }
+
+.error p {
+    background-color: #fed3d3;
+    color: #820000;
+    padding: 1rem;
+    margin: 1rem 0;
+}
+
+label {
+    margin-bottom: .5rem;
+}
+
+select {
+    width: 100%;
+    padding: .5rem;
+}

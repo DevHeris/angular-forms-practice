@@ -12,3 +12,12 @@ export function confirmPasswordValidator(): ValidatorFn {
       : null;
   };
 }
+export function ageValidator(): ValidatorFn {
+  return (control: AbstractControl): { [key: string]: any } | null => {
+    if (control.value < 18) {
+      return { notUpToAge: true };
+    } else {
+      return null;
+    }
+  };
+}

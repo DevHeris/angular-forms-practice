@@ -45,22 +45,6 @@ The goal of this exercise is to create a **User Registration Form** using Angula
 2. Ensure that form data is only displayed if all fields pass validation.
 3. If the form has validation errors, show appropriate error messages next to each field.
 
-### Dynamic Interests Section
-
-1. Use **FormArray** to handle dynamic interest checkboxes.
-2. Provide at least 5 checkboxes (e.g., Sports, Music, Technology, Movies, Books).
-3. Allow users to **add** or **remove** interests dynamically.
-
-### Additional Features
-
-1. Add a **Reset** button to clear the form fields.
-2. Make the form responsive using basic CSS or a CSS framework like **Bootstrap**.
-
-## Bonus
-
-- Display a **loading spinner** during form submission to simulate an API request.
-- Add form touch states and display a message if the user tries to submit an incomplete form.
-
 ## How to Get Started
 
 1. Clone this repository and navigate to the project directory.
