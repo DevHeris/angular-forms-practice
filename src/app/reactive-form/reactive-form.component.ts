@@ -3,6 +3,7 @@ import {
   AbstractControl,
   FormControl,
   FormGroup,
+  ValidationErrors,
   Validators,
 } from '@angular/forms';
 import {
@@ -28,16 +29,15 @@ export class ReactiveFormComponent {
         Validators.minLength(6),
       ]),
       confirmPassword: new FormControl('', Validators.required),
-      age: new FormControl('', ageValidator()),
-      gender: new FormControl(''),
-      interest: new FormControl(''),
+      age: new FormControl('', [ageValidator(), Validators.required]),
+      gender: new FormControl('male', Validators.required),
+      interest: new FormControl('', Validators.required),
     },
     { validators: confirmPasswordValidator() }
   );
 
-  onSubmit(): void {
-    console.log(this.age.hasError('notUpToAge'));
-  }
+  passValidation: boolean = false;
+  errs: ValidationErrors[] = [];
 
   get username(): AbstractControl {
     return this.form.get('username');
@@ -59,5 +59,12 @@ export class ReactiveFormComponent {
   }
   get interest(): AbstractControl {
     return this.form.get('interest');
+  }
+
+  onSubmit(): void {
+    for (let controlValue of Object.values(this.form.controls)) {
+      this.errs.push(controlValue.errors);
+    }
+    this.passValidation = this.errs.every((err) => err === null);
   }
 }

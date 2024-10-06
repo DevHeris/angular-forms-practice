@@ -1,7 +1,11 @@
 <div class="ui raised segment">
   <h2 class="ui header">Angular Reactive Form</h2>
-
-  <form class="ui form" [formGroup]="form" (ngSubmit)="onSubmit()">
+  <form
+    class="ui form"
+    [formGroup]="form"
+    (ngSubmit)="onSubmit()"
+    *ngIf="!passValidation; else inputDisplay"
+  >
     <div class="field">
       <label for="username">Username</label>
       <input
@@ -56,6 +60,9 @@
         class="error"
       >
         <p *ngIf="password.hasError('required')">Password is required.</p>
+        <p *ngIf="password.hasError('minlength')">
+          Password must be at least 6 characters.
+        </p>
       </div>
     </div>
     <div class="field">
@@ -91,20 +98,28 @@
         placeholder="Age"
         name="age"
         formControlName="age"
+        required
       />
       <div *ngIf="age.invalid && (age.dirty || age.touched)" class="error">
         <p *ngIf="age.hasError('notUpToAge')">
           Age must be greater than or equal to 18.
         </p>
+        <p *ngIf="age.hasError('required')">Age is required.</p>
       </div>
     </div>
     <div class="field">
       <label for="gender">Gender</label>
-      <select name="gender" id="gender" formControlName="gender">
+      <select name="gender" id="gender" formControlName="gender" required>
         <option value="male">Male</option>
         <option value="female">Female</option>
         <option value="others">Others</option>
       </select>
+      <div
+        *ngIf="gender.invalid && (gender.dirty || gender.touched)"
+        class="error"
+      >
+        <p *ngIf="gender.hasError('required')">Gender is required.</p>
+      </div>
     </div>
     <div class="field">
       <label for="">Interest</label>
@@ -131,8 +146,22 @@
         />
         <label for="interest_vue">Vue</label><br />
       </div>
+      <div
+        *ngIf="interest.invalid && (interest.dirty || interest.touched)"
+        class="error"
+      >
+        <p *ngIf="interest.hasError('required')">Interest is required.</p>
+      </div>
     </div>
 
     <button type="submit" class="ui button">Submit</button>
   </form>
+
+  <ng-template #inputDisplay>
+    <p>Username : {{ username.value }}</p>
+    <p>Email : {{ email.value }}</p>
+    <p>Age : {{ age.value }}</p>
+    <p>Gender : {{ gender.value }}</p>
+    <p>Interest : {{ interest.value }}</p>
+  </ng-template>
 </div>

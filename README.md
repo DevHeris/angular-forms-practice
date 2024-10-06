@@ -31,13 +31,10 @@ The goal of this exercise is to create a **User Registration Form** using Angula
    - Must match the Password field.
 5. **Age**:
    - Must be a number and greater than or equal to 18.
-6. **Gender**:
-   - Required (Radio buttons).
 
 ### Custom Validation
 
 1. Add a **custom validator** for the **Password** and **Confirm Password** fields to ensure they match.
-2. Add an **asynchronous custom validator** for the **Username** field to check for username availability (simulate this with `setTimeout` or an observable).
 
 ### Form Submission
 
